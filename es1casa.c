@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     int n;
     int p, status;
     int fd[2];
+    int counter = 0; 
 
     if(pipe(fd) < 0) return 0;
 
@@ -45,6 +46,9 @@ int main(int argc, char* argv[])
     else //figlio
     {
         close(fd[1]);
+        char c;
+        printf("Inserisci una lettera: ");
+        scanf("%c", &c);
         file = fopen(argv[2], "wb");
         if(file == NULL) //errore
         {
@@ -52,7 +56,13 @@ int main(int argc, char* argv[])
             return 0;
         }
         while((n = read(fd[0], buffer, sizeof(buffer)))>0)
+        {   
             fwrite(buffer, 1, n, file);
+            for (int i=0; i<n; i++)
+	      	         if (buffer[i] == c)
+		   		counter++;
+        }
+        printf("%d\n", counter);
         fclose(file);
         close(fd[0]);
         return 1;
