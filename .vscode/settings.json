@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "es1casa": "c"
+        "es1casa": "c",
+        "stat.h": "c"
     }
 }
