@@ -27,12 +27,14 @@ int main(){
     printf("Ciao\n");
 
     pthread_create(&threadGiorno, NULL, &StampaBuongiorno, msg1);
-    pthread_create(&threadSera, NULL, &StampaBuonasera, msg2);
-    pthread_create(&threadNotte, NULL, &StampaBuonanotte, msg3);
+    pthread_create(&threadGiorno, NULL, &StampaBuongiorno, msg2);
+    pthread_create(&threadGiorno, NULL, &StampaBuongiorno, msg3);
+    //pthread_create(&threadSera, NULL, &StampaBuonasera, msg2);
+    //pthread_create(&threadNotte, NULL, &StampaBuonanotte, msg3);
 
     pthread_join(threadGiorno, NULL);
-    pthread_join(threadSera, NULL);
-    pthread_join(threadNotte, NULL);
+    //pthread_join(threadSera, NULL);
+    //pthread_join(threadNotte, NULL);
 
     //printf("Buongiorno\n");
     //printf("Buonasera\n");
